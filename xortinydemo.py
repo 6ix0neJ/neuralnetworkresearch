@@ -52,6 +52,7 @@ b3 = random.random()
 errors = []
 
 learning_rate = 0.5
+if logfile: logfile.write(f"Learning Rate: {learning_rate}\n\n")
 
 if graphtraining == "y":
     plt.ion()
