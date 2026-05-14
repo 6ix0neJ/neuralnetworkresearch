@@ -1,0 +1,17 @@
+Enter Training Interval: 100000
+Display Training Progress? (y/n): n
+Training...
+Still training... Epoch:  0
+Still training... Epoch:  10000
+Still training... Epoch:  20000
+Still training... Epoch:  30000
+Still training... Epoch:  40000
+Still training... Epoch:  50000
+Still training... Epoch:  60000
+Still training... Epoch:  70000
+Still training... Epoch:  80000
+Still training... Epoch:  90000
+[0, 0] -> 0.0
+[0, 1] -> 0.934
+[1, 0] -> 0.934
+[1, 1] -> 0.082
