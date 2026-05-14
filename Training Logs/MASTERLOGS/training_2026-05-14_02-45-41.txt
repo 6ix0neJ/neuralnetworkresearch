@@ -1,0 +1,115 @@
+=== Neural Network Training Log ===
+Epoch: 0 | Error: 2.0035 | Accuracy: 49.91%
+Epoch: 1000 | Error: 1.9757 | Accuracy: 50.61%
+Epoch: 2000 | Error: 1.8334 | Accuracy: 54.16%
+Epoch: 3000 | Error: 1.8132 | Accuracy: 54.67%
+Epoch: 4000 | Error: 1.8075 | Accuracy: 54.81%
+Epoch: 5000 | Error: 1.7234 | Accuracy: 56.92%
+Epoch: 6000 | Error: 1.4472 | Accuracy: 63.82%
+Epoch: 7000 | Error: 1.4128 | Accuracy: 64.68%
+Epoch: 8000 | Error: 1.3988 | Accuracy: 65.03%
+Epoch: 9000 | Error: 1.3910 | Accuracy: 65.23%
+Epoch: 10000 | Error: 1.3858 | Accuracy: 65.36%
+Epoch: 11000 | Error: 1.3820 | Accuracy: 65.45%
+Epoch: 12000 | Error: 1.3792 | Accuracy: 65.52%
+Epoch: 13000 | Error: 1.3769 | Accuracy: 65.58%
+Epoch: 14000 | Error: 1.3750 | Accuracy: 65.62%
+Epoch: 15000 | Error: 1.3735 | Accuracy: 65.66%
+Epoch: 16000 | Error: 1.3722 | Accuracy: 65.70%
+Epoch: 17000 | Error: 1.3710 | Accuracy: 65.72%
+Epoch: 18000 | Error: 1.3700 | Accuracy: 65.75%
+Epoch: 19000 | Error: 1.3691 | Accuracy: 65.77%
+Epoch: 20000 | Error: 1.3683 | Accuracy: 65.79%
+Epoch: 21000 | Error: 1.3676 | Accuracy: 65.81%
+Epoch: 22000 | Error: 1.3670 | Accuracy: 65.83%
+Epoch: 23000 | Error: 1.3664 | Accuracy: 65.84%
+Epoch: 24000 | Error: 1.3658 | Accuracy: 65.85%
+Epoch: 25000 | Error: 1.3653 | Accuracy: 65.87%
+Epoch: 26000 | Error: 1.3649 | Accuracy: 65.88%
+Epoch: 27000 | Error: 1.3645 | Accuracy: 65.89%
+Epoch: 28000 | Error: 1.3641 | Accuracy: 65.90%
+Epoch: 29000 | Error: 1.3637 | Accuracy: 65.91%
+Epoch: 30000 | Error: 1.3633 | Accuracy: 65.92%
+Epoch: 31000 | Error: 1.3630 | Accuracy: 65.92%
+Epoch: 32000 | Error: 1.3627 | Accuracy: 65.93%
+Epoch: 33000 | Error: 1.3624 | Accuracy: 65.94%
+Epoch: 34000 | Error: 1.3622 | Accuracy: 65.95%
+Epoch: 35000 | Error: 1.3619 | Accuracy: 65.95%
+Epoch: 36000 | Error: 1.3617 | Accuracy: 65.96%
+Epoch: 37000 | Error: 1.3614 | Accuracy: 65.96%
+Epoch: 38000 | Error: 1.3612 | Accuracy: 65.97%
+Epoch: 39000 | Error: 1.3610 | Accuracy: 65.98%
+Epoch: 40000 | Error: 1.3608 | Accuracy: 65.98%
+Epoch: 41000 | Error: 1.3606 | Accuracy: 65.99%
+Epoch: 42000 | Error: 1.3604 | Accuracy: 65.99%
+Epoch: 43000 | Error: 1.3602 | Accuracy: 65.99%
+Epoch: 44000 | Error: 1.3601 | Accuracy: 66.00%
+Epoch: 45000 | Error: 1.3599 | Accuracy: 66.00%
+Epoch: 46000 | Error: 1.3597 | Accuracy: 66.01%
+Epoch: 47000 | Error: 1.3596 | Accuracy: 66.01%
+Epoch: 48000 | Error: 1.3595 | Accuracy: 66.01%
+Epoch: 49000 | Error: 1.3593 | Accuracy: 66.02%
+Epoch: 50000 | Error: 1.3592 | Accuracy: 66.02%
+Epoch: 51000 | Error: 1.3590 | Accuracy: 66.02%
+Epoch: 52000 | Error: 1.3589 | Accuracy: 66.03%
+Epoch: 53000 | Error: 1.3588 | Accuracy: 66.03%
+Epoch: 54000 | Error: 1.3587 | Accuracy: 66.03%
+Epoch: 55000 | Error: 1.3586 | Accuracy: 66.04%
+Epoch: 56000 | Error: 1.3585 | Accuracy: 66.04%
+Epoch: 57000 | Error: 1.3584 | Accuracy: 66.04%
+Epoch: 58000 | Error: 1.3582 | Accuracy: 66.04%
+Epoch: 59000 | Error: 1.3581 | Accuracy: 66.05%
+Epoch: 60000 | Error: 1.3581 | Accuracy: 66.05%
+Epoch: 61000 | Error: 1.3580 | Accuracy: 66.05%
+Epoch: 62000 | Error: 1.3579 | Accuracy: 66.05%
+Epoch: 63000 | Error: 1.3578 | Accuracy: 66.06%
+Epoch: 64000 | Error: 1.3577 | Accuracy: 66.06%
+Epoch: 65000 | Error: 1.3576 | Accuracy: 66.06%
+Epoch: 66000 | Error: 1.3575 | Accuracy: 66.06%
+Epoch: 67000 | Error: 1.3574 | Accuracy: 66.06%
+Epoch: 68000 | Error: 1.3574 | Accuracy: 66.07%
+Epoch: 69000 | Error: 1.3573 | Accuracy: 66.07%
+Epoch: 70000 | Error: 1.3572 | Accuracy: 66.07%
+Epoch: 71000 | Error: 1.3571 | Accuracy: 66.07%
+Epoch: 72000 | Error: 1.3571 | Accuracy: 66.07%
+Epoch: 73000 | Error: 1.3570 | Accuracy: 66.08%
+Epoch: 74000 | Error: 1.3569 | Accuracy: 66.08%
+Epoch: 75000 | Error: 1.3569 | Accuracy: 66.08%
+Epoch: 76000 | Error: 1.3568 | Accuracy: 66.08%
+Epoch: 77000 | Error: 1.3567 | Accuracy: 66.08%
+Epoch: 78000 | Error: 1.3567 | Accuracy: 66.08%
+Epoch: 79000 | Error: 1.3566 | Accuracy: 66.08%
+Epoch: 80000 | Error: 1.3565 | Accuracy: 66.09%
+Epoch: 81000 | Error: 1.3565 | Accuracy: 66.09%
+Epoch: 82000 | Error: 1.3564 | Accuracy: 66.09%
+Epoch: 83000 | Error: 1.3564 | Accuracy: 66.09%
+Epoch: 84000 | Error: 1.3563 | Accuracy: 66.09%
+Epoch: 85000 | Error: 1.3563 | Accuracy: 66.09%
+Epoch: 86000 | Error: 1.3562 | Accuracy: 66.09%
+Epoch: 87000 | Error: 1.3562 | Accuracy: 66.10%
+Epoch: 88000 | Error: 1.3561 | Accuracy: 66.10%
+Epoch: 89000 | Error: 1.3561 | Accuracy: 66.10%
+Epoch: 90000 | Error: 1.3560 | Accuracy: 66.10%
+Epoch: 91000 | Error: 1.3560 | Accuracy: 66.10%
+Epoch: 92000 | Error: 1.3559 | Accuracy: 66.10%
+Epoch: 93000 | Error: 1.3559 | Accuracy: 66.10%
+Epoch: 94000 | Error: 1.3558 | Accuracy: 66.10%
+Epoch: 95000 | Error: 1.3558 | Accuracy: 66.11%
+Epoch: 96000 | Error: 1.3557 | Accuracy: 66.11%
+Epoch: 97000 | Error: 1.3557 | Accuracy: 66.11%
+Epoch: 98000 | Error: 1.3556 | Accuracy: 66.11%
+Epoch: 99000 | Error: 1.3556 | Accuracy: 66.11%
+
+=== Final Weights ===
+w1=-7.455840839285731
+w2=14.379560463431702
+w3=-10.498526488258687
+w4=-11.037283147684063
+w5=-0.7275221831704238
+w6=-9.467976266799518
+
+=== Final Model Outputs ===
+Input: [0, 0] | Expected: 0 | Output: 0.007
+Input: [0, 1] | Expected: 1 | Output: 0.492
+Input: [1, 0] | Expected: 1 | Output: 0.667
+Input: [1, 1] | Expected: 0 | Output: 0.492
