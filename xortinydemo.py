@@ -6,19 +6,23 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-os.makedirs("Training Logs/MASTERLOGS", exist_ok=True)
-
 traininginterval = int(input("Enter Training Interval: "))
 graphtraining = str(input("Graph Training Progress? (y/n): ")).lower()
 traindisp = str(input("Display Training Progress? (y/n): ")).lower()
-savelogs = input("Save training logs? (y/n): ").lower()
+savelogs = input("Save training logs? (y/n): ").strip().lower() == "y"
 
 print("Training...")
 
-logfile = open(f"Training Logs/MASTERLOGS/training_{timestamp}.txt", "w")
+logfile = None
+logfile_path = None
 
-if savelogs == "y": logfile.write("=== Neural Network Training Log ===\n")
+if savelogs:
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    os.makedirs("Training Logs/MASTERLOGS", exist_ok=True)
+    logfile_path = f"Training Logs/MASTERLOGS/training_{timestamp}.txt"
+    logfile = open(logfile_path, "w")
+
+if savelogs: logfile.write("=== Neural Network Training Log ===\n")
 
 # sigmoid activation
 def sigmoid(x):
@@ -178,7 +182,8 @@ for inputs, target in training_data:
             f"Output: {round(output, 3)}\n"
         )
 
-logfile.close()
+if logfile:
+    logfile.close()
 
 if logfile:
-    print("TRAINING COMPLETE. Logs saved to: ", f"Training Logs/MASTERLOGS/training_{timestamp}.txt")
+    print("TRAINING COMPLETE. Logs saved to: ", logfile_path)
