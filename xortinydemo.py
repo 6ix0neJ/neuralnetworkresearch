@@ -89,6 +89,7 @@ for epoch in range(traininginterval):
         # update output weights
         w5 += h1 * d_output * learning_rate
         w6 += h2 * d_output * learning_rate
+        b3 += d_output * learning_rate
 
         # update hidden weights
         w1 += x1 * d_h1 * learning_rate
@@ -96,6 +97,8 @@ for epoch in range(traininginterval):
 
         w3 += x1 * d_h2 * learning_rate
         w4 += x2 * d_h2 * learning_rate
+        b1 += d_h1 * learning_rate
+        b2 += d_h2 * learning_rate
 
     errors.append(total_error)
 
