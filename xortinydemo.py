@@ -180,4 +180,5 @@ for inputs, target in training_data:
 
 logfile.close()
 
-print("TRAINING COMPLETE. Logs saved to: ", f"Training Logs/MASTERLOGS/training_{timestamp}.txt")
+if logfile:
+    print("TRAINING COMPLETE. Logs saved to: ", f"Training Logs/MASTERLOGS/training_{timestamp}.txt")
