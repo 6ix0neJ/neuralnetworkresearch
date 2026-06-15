@@ -1,0 +1,67 @@
+=== Neural Network Training Log ===
+Learning Rate: 0.5
+
+Epoch: 0 | Error: 2.0205 | Accuracy: 49.49%
+Epoch: 1000 | Error: 2.0409 | Accuracy: 48.98%
+Epoch: 2000 | Error: 1.7925 | Accuracy: 55.19%
+Epoch: 3000 | Error: 0.2843 | Accuracy: 92.89%
+Epoch: 4000 | Error: 0.1705 | Accuracy: 95.74%
+Epoch: 5000 | Error: 0.1316 | Accuracy: 96.71%
+Epoch: 6000 | Error: 0.1106 | Accuracy: 97.24%
+Epoch: 7000 | Error: 0.0971 | Accuracy: 97.57%
+Epoch: 8000 | Error: 0.0874 | Accuracy: 97.81%
+Epoch: 9000 | Error: 0.0802 | Accuracy: 98.00%
+Epoch: 10000 | Error: 0.0744 | Accuracy: 98.14%
+Epoch: 11000 | Error: 0.0697 | Accuracy: 98.26%
+Epoch: 12000 | Error: 0.0658 | Accuracy: 98.36%
+Epoch: 13000 | Error: 0.0624 | Accuracy: 98.44%
+Epoch: 14000 | Error: 0.0596 | Accuracy: 98.51%
+Epoch: 15000 | Error: 0.0570 | Accuracy: 98.57%
+Epoch: 16000 | Error: 0.0548 | Accuracy: 98.63%
+Epoch: 17000 | Error: 0.0528 | Accuracy: 98.68%
+Epoch: 18000 | Error: 0.0510 | Accuracy: 98.72%
+Epoch: 19000 | Error: 0.0494 | Accuracy: 98.77%
+Epoch: 20000 | Error: 0.0479 | Accuracy: 98.80%
+Epoch: 21000 | Error: 0.0465 | Accuracy: 98.84%
+Epoch: 22000 | Error: 0.0453 | Accuracy: 98.87%
+Epoch: 23000 | Error: 0.0441 | Accuracy: 98.90%
+Epoch: 24000 | Error: 0.0431 | Accuracy: 98.92%
+Epoch: 25000 | Error: 0.0421 | Accuracy: 98.95%
+Epoch: 26000 | Error: 0.0411 | Accuracy: 98.97%
+Epoch: 27000 | Error: 0.0402 | Accuracy: 98.99%
+Epoch: 28000 | Error: 0.0394 | Accuracy: 99.01%
+Epoch: 29000 | Error: 0.0387 | Accuracy: 99.03%
+Epoch: 30000 | Error: 0.0379 | Accuracy: 99.05%
+Epoch: 31000 | Error: 0.0372 | Accuracy: 99.07%
+Epoch: 32000 | Error: 0.0366 | Accuracy: 99.09%
+Epoch: 33000 | Error: 0.0359 | Accuracy: 99.10%
+Epoch: 34000 | Error: 0.0354 | Accuracy: 99.12%
+Epoch: 35000 | Error: 0.0348 | Accuracy: 99.13%
+Epoch: 36000 | Error: 0.0342 | Accuracy: 99.14%
+Epoch: 37000 | Error: 0.0337 | Accuracy: 99.16%
+Epoch: 38000 | Error: 0.0332 | Accuracy: 99.17%
+Epoch: 39000 | Error: 0.0328 | Accuracy: 99.18%
+Epoch: 40000 | Error: 0.0323 | Accuracy: 99.19%
+Epoch: 41000 | Error: 0.0319 | Accuracy: 99.20%
+Epoch: 42000 | Error: 0.0315 | Accuracy: 99.21%
+Epoch: 43000 | Error: 0.0311 | Accuracy: 99.22%
+Epoch: 44000 | Error: 0.0307 | Accuracy: 99.23%
+Epoch: 45000 | Error: 0.0303 | Accuracy: 99.24%
+Epoch: 46000 | Error: 0.0299 | Accuracy: 99.25%
+Epoch: 47000 | Error: 0.0296 | Accuracy: 99.26%
+Epoch: 48000 | Error: 0.0293 | Accuracy: 99.27%
+Epoch: 49000 | Error: 0.0289 | Accuracy: 99.28%
+
+=== Final Weights ===
+w1=6.6840849378561495
+w2=-6.781544606791187
+w3=6.5563650172284875
+w4=-6.339170334314019
+w5=11.13794483135652
+w6=-10.897442630655293
+
+=== Final Model Outputs ===
+Input: [0, 0] | Expected: 0 | Output: 0.007
+Input: [0, 1] | Expected: 1 | Output: 0.992
+Input: [1, 0] | Expected: 1 | Output: 0.993
+Input: [1, 1] | Expected: 0 | Output: 0.006

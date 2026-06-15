@@ -1,0 +1,27 @@
+=== Neural Network Training Log ===
+Learning Rate: 0.5
+
+Epoch: 0 | Error: 2.0103 | Accuracy: 49.74%
+Epoch: 1000 | Error: 2.0187 | Accuracy: 49.53%
+Epoch: 2000 | Error: 0.3686 | Accuracy: 90.78%
+Epoch: 3000 | Error: 0.1864 | Accuracy: 95.34%
+Epoch: 4000 | Error: 0.1388 | Accuracy: 96.53%
+Epoch: 5000 | Error: 0.1148 | Accuracy: 97.13%
+Epoch: 6000 | Error: 0.0999 | Accuracy: 97.50%
+Epoch: 7000 | Error: 0.0895 | Accuracy: 97.76%
+Epoch: 8000 | Error: 0.0818 | Accuracy: 97.96%
+Epoch: 9000 | Error: 0.0757 | Accuracy: 98.11%
+
+=== Final Weights ===
+w1=5.917457976963682
+w2=-5.678181348897857
+w3=6.253252736942011
+w4=-6.294139745710923
+w5=-9.196185373623386
+w6=9.419698251222606
+
+=== Final Model Outputs ===
+Input: [0, 0] | Expected: 0 | Output: 0.018
+Input: [0, 1] | Expected: 1 | Output: 0.98
+Input: [1, 0] | Expected: 1 | Output: 0.983
+Input: [1, 1] | Expected: 0 | Output: 0.016
