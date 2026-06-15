@@ -1,0 +1,18 @@
+=== Neural Network Training Log ===
+Learning Rate: 0.5
+
+Epoch: 0 | Error: 2.0488 | Accuracy: 48.78%
+
+=== Final Weights ===
+w1=-0.4377468652357119
+w2=-0.48042916850384
+w3=-0.4311872605839215
+w4=-0.8632005715146356
+w5=-0.06080716984588719
+w6=-0.1293367826971092
+
+=== Final Model Outputs ===
+Input: [0, 0] | Expected: 0 | Output: 0.494
+Input: [0, 1] | Expected: 1 | Output: 0.502
+Input: [1, 0] | Expected: 1 | Output: 0.499
+Input: [1, 1] | Expected: 0 | Output: 0.506
