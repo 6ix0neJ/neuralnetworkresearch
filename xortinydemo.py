@@ -2,6 +2,7 @@
 
 import random
 import math
+import time
 import os
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -12,6 +13,8 @@ traindisp = str(input("Display Training Progress? (y/n): ")).lower()
 savelogs = input("Save training logs? (y/n): ").strip().lower() == "y"
 
 print("Training...")
+
+perftime_start = time.time()
 
 logfile = None
 logfile_path = None
@@ -184,6 +187,10 @@ for inputs, target in training_data:
 
 if logfile:
     logfile.close()
+
+perftime_stop = time.time()
+
+print("Training Time: ", round(perftime_stop - perftime_start, 2), "seconds")
 
 if logfile:
     print("TRAINING COMPLETE. Logs saved to: ", logfile_path)
