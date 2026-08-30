@@ -7,6 +7,9 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime
 
+url = "https://github.com/6ix0neJ"
+print("Written by Jibril Richardson -", url)
+
 traininginterval = int(input("Enter Training Interval: "))
 graphtraining = str(input("Graph Training Progress? (y/n): ")).lower()
 traindisp = str(input("Display Training Progress? (y/n): ")).lower()
