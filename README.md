@@ -33,7 +33,7 @@ Current dependencies:
 Run the program with:
 
 ```bash
-python xortinydemo.py
+python xornumpy.py
 ```
 
 The program will:
