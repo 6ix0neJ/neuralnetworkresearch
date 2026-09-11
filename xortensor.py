@@ -1,30 +1,45 @@
 import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
 
-# Create the neural network
-xor = tf.keras.Sequential([
-    tf.keras.layers.Dense(16, activation="relu"),
-    tf.keras.layers.Dense(8, activation="relu"),
+# Training data
+X = np.array([
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+], dtype=np.float32)
+
+y = np.array([
+    [0],
+    [1],
+    [1],
+    [0]
+], dtype=np.float32)
+
+# Build neural network
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(4, activation="relu", input_shape=(2,)),
     tf.keras.layers.Dense(1, activation="sigmoid")
 ])
 
-training_data = [
-    ([0,0], 0),
-    ([0,1], 1),
-    ([1,0], 1),
-    ([1,1], 0)
-]
-
-# Prepare the training data
-X_train = tf.constant([data[0] for data in training_data], dtype=tf.float32)
-y_train = tf.constant([data[1] for data in training_data], dtype=tf.float32)
-
-xor.compile(
+# Configure training
+model.compile(
     optimizer="adam",
     loss="binary_crossentropy",
     metrics=["accuracy"]
 )
-epochselect = int(input("How many epochs?: "))
-xor.fit(X_train, y_train, epochs=epochselect)
 
-while xor.fit(X_train, y_train, epochs=epochselect):
-    print(xor.epochs)
+# Train
+model.fit(X, y, epochs=1000, verbose=0)
+
+plt.plot(model.history.history['loss'])
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.title('Training Loss')
+plt.show()
+# Test
+predictions = model.predict(X)
+
+for inputs, prediction in zip(X, predictions):
+    print(inputs, "->", prediction[0])
