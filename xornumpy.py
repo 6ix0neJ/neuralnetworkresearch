@@ -117,11 +117,10 @@ for epoch in range(traininginterval):
         if epoch % 100 == 0:
             ax.clear()
 
-            ax.plot(errors)
-
+            ax.plot(errors, color = 'magenta')
+            ax.set_title("Neural Network Learning")
             ax.set_xlabel("Epoch")
             ax.set_ylabel("Total Error")
-            ax.set_title("Neural Network Learning")
 
 
             fig.canvas.draw()

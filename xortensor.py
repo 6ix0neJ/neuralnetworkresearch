@@ -50,7 +50,7 @@ def epoch_time_graph(epoch_times):
     epoch_times_ms = [t * 1000 for t in epoch_times]
 
     plt.figure(figsize=(10, 5))
-    plt.bar(epochs, epoch_times_ms, width=0.8)
+    plt.bar(epochs, epoch_times_ms, width=0.4, color='magenta')
 
     plt.title("Epoch Times")
     plt.xlabel("Epoch #")
