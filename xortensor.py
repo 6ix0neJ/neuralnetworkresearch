@@ -70,29 +70,28 @@ model.fit(
     callbacks=[timer]
     )
 """
-#print(model.history)
-#train_loss = model.history.history['loss']
-#val_loss = model.history.history['val_loss']
+print(model.history)
+train_loss = model.history.history['loss']
+val_loss = model.history.history['val_loss']
 
 # plotting
 
-#plt.plot(model.history.history['loss'])
-#plt.xlabel('Epoch')
-#plt.ylabel('Loss')
-#plt.title('Training Loss')
-#plt.show()
+plt.plot(model.history.history['loss'])
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.title('Training Loss')
+plt.show()
 
-#plt.plot(model.history.history['accuracy'])
-#plt.xlabel('Epoch')
-#plt.ylabel('Accuracy')
-#plt.title('Training Accuracy')
+plt.plot(model.history.history['accuracy'])
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.title('Training Accuracy')
 """
 
 # Test
 
 epochtimegraphyn = input("Do you want to see the epoch time graph? (y/n): ")
 if epochtimegraphyn.lower() == "y":
-    print(timer.epoch_times)
     epoch_time_graph(timer.epoch_times)
 
 predictions = model.predict(X)
