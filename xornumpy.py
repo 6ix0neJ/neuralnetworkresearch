@@ -194,7 +194,7 @@ perftime_stop = time.time()
 
 print("Training Time: ", round(perftime_stop - perftime_start, 2), "seconds")
 
-logfile.write(f"\nTraining Time: {round(perftime_stop - perftime_start, 2)} seconds\n")
+if logfile: logfile.write(f"\nTraining Time: {round(perftime_stop - perftime_start, 2)} seconds\n")
 
 if logfile:
     print("TRAINING COMPLETE. Logs saved to: ", logfile_path)
