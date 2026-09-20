@@ -73,26 +73,40 @@ model.fit(
 print(model.history)
 train_loss = model.history.history['loss']
 val_loss = model.history.history['val_loss']
-
+"""
 # plotting
 
-plt.plot(model.history.history['loss'])
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.title('Training Loss')
-plt.show()
+def plot_loss():
+    plt.plot(model.history.history['loss'])
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.title('Training Loss')
+    plt.show()
 
-plt.plot(model.history.history['accuracy'])
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.title('Training Accuracy')
-"""
+def plot_accuracy():
+    plt.plot(model.history.history['accuracy'])
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    plt.title('Training Accuracy')
+    plt.show()
 
 # Test
 
-epochtimegraphyn = input("Do you want to see the epoch time graph? (y/n): ")
-if epochtimegraphyn.lower() == "y":
+print("Select graphing option")
+print("1: Plot Loss")
+print("2: Plot Accuracy")
+print("3: Plot Epoch Time Graph")
+print("4: Skip Graphing")
+graph_option = input("Enter your choice (1, 2, 3, or 4): ")
+
+if graph_option == "1":
+    plot_loss()
+elif graph_option == "2":
+    plot_accuracy()
+elif graph_option == "3":
     epoch_time_graph(timer.epoch_times)
+elif graph_option == "4":
+    pass
 
 predictions = model.predict(X)
 
