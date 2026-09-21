@@ -92,21 +92,26 @@ def plot_accuracy():
 
 # Test
 
-print("Select graphing option")
-print("1: Plot Loss")
-print("2: Plot Accuracy")
-print("3: Plot Epoch Time Graph")
-print("4: Skip Graphing")
-graph_option = input("Enter your choice (1, 2, 3, or 4): ")
+while True:
+    print("Select graphing option")
+    print("1: Plot Loss")
+    print("2:` Plot Accuracy")
+    print("3: Plot Epoch Time Graph")
+    print("4: Skip Graphing")
+    graph_option = input("Enter your choice (1, 2, 3, or 4): ")
 
-if graph_option == "1":
-    plot_loss()
-elif graph_option == "2":
-    plot_accuracy()
-elif graph_option == "3":
-    epoch_time_graph(timer.epoch_times)
-elif graph_option == "4":
-    pass
+    if graph_option == "1":
+        plot_loss()
+    elif graph_option == "2":
+        plot_accuracy()
+    elif graph_option == "3":
+        epoch_time_graph(timer.epoch_times)
+    elif graph_option == "4":
+        pass
+        break
+    else:
+        print("Invalid option. Please select 1, 2, 3, or 4.")
+        continue
 
 predictions = model.predict(X)
 
