@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-
+import sys
 # Training data
 X = np.array([
     [0, 0],
@@ -46,6 +46,22 @@ class EpochTimer(tf.keras.callbacks.Callback):
             self.epoch_times.append(epoch_time)
             print(f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
 
+def progress_bar(current_epoch, traininterval):
+    percent = (current_epoch / traininterval) * 100
+    bar_length = 50
+    filled_length = int(bar_length * current_epoch // traininterval)
+    bar = "█" * filled_length + "-" * (bar_length - filled_length)
+
+    # Overwrite the line with the current progress
+    sys.stdout.write(f"\rProcessing: |{bar}| {percent:.1f}% Complete Epoch: {current_epoch}/{traininterval}")
+    sys.stdout.flush()
+
+class EpochTracker(tf.keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs=None):
+        # 'epoch' is 0-indexed, so Epoch 1 will pass 0, Epoch 2 will pass 1, etc.
+        self.current_epoch = epoch + 1
+        progress_bar(self.current_epoch, traininterval)
+
 def epoch_time_graph(epoch_times):
     epochs = list(range(1, len(epoch_times) + 1))
 
@@ -61,18 +77,23 @@ def epoch_time_graph(epoch_times):
 
     plt.show()
 
+
 # Train
 
 timer = EpochTimer()
+epoch_tracker = EpochTracker()
+
+if not epochtimeyorn:
+    print("Training...")
+
 model.fit(
     X,
     y,
     epochs=traininterval,
     verbose=0,
-    callbacks=[timer]
+    callbacks=[timer, epoch_tracker]
     )
 
-if not epochtimeyorn: print("Training...")
 """
 print(model.history)
 train_loss = model.history.history['loss']
