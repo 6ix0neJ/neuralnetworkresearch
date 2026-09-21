@@ -31,18 +31,20 @@ model.compile(
     metrics=["accuracy"]
 )
 traininterval = int(input("How many epochs?: "))
+epochtimeyorn = input("Would you like to see epoch times? (y/n): ").strip().lower() == "y"
 
 class EpochTimer(tf.keras.callbacks.Callback):
-    def on_train_begin(self, logs=None):
-        self.epoch_times = []
+    if epochtimeyorn:
+        def on_train_begin(self, logs=None):
+            self.epoch_times = []
 
-    def on_epoch_begin(self, epoch, logs=None):
-        self.start_time = time.time()
+        def on_epoch_begin(self, epoch, logs=None):
+            self.start_time = time.time()
 
-    def on_epoch_end(self, epoch, logs=None):
-        epoch_time = time.time() - self.start_time
-        self.epoch_times.append(epoch_time)
-        print(f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
+        def on_epoch_end(self, epoch, logs=None):
+            epoch_time = time.time() - self.start_time
+            self.epoch_times.append(epoch_time)
+            print(f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
 
 def epoch_time_graph(epoch_times):
     epochs = list(range(1, len(epoch_times) + 1))
@@ -69,6 +71,8 @@ model.fit(
     verbose=0,
     callbacks=[timer]
     )
+
+if not epochtimeyorn: print("Training...")
 """
 print(model.history)
 train_loss = model.history.history['loss']
@@ -95,7 +99,7 @@ def plot_accuracy():
 while True:
     print("Select graphing option")
     print("1: Plot Loss")
-    print("2:` Plot Accuracy")
+    print("2: Plot Accuracy")
     print("3: Plot Epoch Time Graph")
     print("4: Skip Graphing")
     graph_option = input("Enter your choice (1, 2, 3, or 4): ")
