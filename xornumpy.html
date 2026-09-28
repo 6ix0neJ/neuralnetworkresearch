@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XOR Neural Network Console</title>
+  <style>
+    :root { color-scheme: dark; font-family: monospace; background: #10151c; color: #dbe7ef; }
+    body { max-width: 960px; margin: 32px auto; padding: 0 20px; }
+    h1 { font-size: 24px; color: #78e0b5; }
+    form { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin: 24px 0; }
+    input[type=number] { width: 110px; padding: 8px; }
+    button, .download { padding: 10px 16px; color: #10151c; background: #78e0b5; border: 0; border-radius: 4px; cursor: pointer; }
+    button:disabled { opacity: .5; cursor: default; }
+    pre { background: #080d12; border: 1px solid #30404e; padding: 18px; height: 360px; overflow: auto; white-space: pre-wrap; line-height: 1.5; }
+    canvas { width: 100%; background: #080d12; border: 1px solid #30404e; }
+    a { color: #78e0b5; }
+    .download { display: inline-block; margin-top: 16px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <h1>XOR Neural Network Console</h1>
+  <p>JavaScript adaptation of xornumpy.py by Jibril Richardson — <a href="https://github.com/6ix0neJ">GitHub</a>.</p>
+  <p>A 2-input, 2-hidden-neuron, 1-output network. Open this file in a browser and select Train. Output also appears in the browser developer console.</p>
+  <form id="controls">
+    <label>Training epochs <input id="epochs" type="number" min="1" max="1000000" step="1" value="50000" required></label>
+    <label><input id="graph" type="checkbox" checked> Graph training</label>
+    <label><input id="progress" type="checkbox" checked> Display progress</label>
+    <label><input id="save" type="checkbox"> Save logs</label>
+    <button id="train" type="submit">Train</button>
+    <button id="stop" type="button" disabled>Stop</button>
+  </form>
+  <p id="status" role="status">Ready. Random initialization means results vary between runs.</p>
+  <pre id="console" tabindex="0" aria-label="Training console">Waiting for training...</pre>
+  <canvas id="chart" width="960" height="280" hidden aria-label="Total absolute error versus epoch" role="img"></canvas>
+  <a id="download" class="download" hidden>Download training log</a>
+  <script>
+    'use strict';
+    const trainingData = [[[0, 0], 0], [[0, 1], 1], [[1, 0], 1], [[1, 1], 0]];
+    const sigmoid = x => 1 / (1 + Math.exp(-x));
+    const derivative = x => x * (1 - x);
+    const learningRate = 0.5;
+
+    // Same initialization, forward pass, and online backpropagation as the Python source.
+    class XorNetwork {
+      constructor(random = Math.random) {
+        for (const key of ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'b1', 'b2', 'b3']) this[key] = random();
+      }
+      forward([x1, x2]) {
+        const h1 = sigmoid(x1 * this.w1 + x2 * this.w2 + this.b1);
+        const h2 = sigmoid(x1 * this.w3 + x2 * this.w4 + this.b2);
+        return { h1, h2, output: sigmoid(h1 * this.w5 + h2 * this.w6 + this.b3) };
+      }
+      trainEpoch() {
+        let totalError = 0;
+        for (const [inputs, target] of trainingData) {
+          const [x1, x2] = inputs;
+          const { h1, h2, output } = this.forward(inputs);
+          const error = target - output;
+          totalError += Math.abs(error);
+          const dOutput = error * derivative(output);
+          // Calculate both hidden deltas before changing the output weights.
+          const dH1 = dOutput * this.w5 * derivative(h1);
+          const dH2 = dOutput * this.w6 * derivative(h2);
+          this.w5 += h1 * dOutput * learningRate;
+          this.w6 += h2 * dOutput * learningRate;
+          this.b3 += dOutput * learningRate;
+          this.w1 += x1 * dH1 * learningRate;
+          this.w2 += x2 * dH1 * learningRate;
+          this.w3 += x1 * dH2 * learningRate;
+          this.w4 += x2 * dH2 * learningRate;
+          this.b1 += dH1 * learningRate;
+          this.b2 += dH2 * learningRate;
+        }
+        return totalError;
+      }
+    }
+
+    const byId = id => document.getElementById(id);
+    let stopped = false;
+    let downloadUrl = null;
+    function drawGraph(points, epochs) {
+      const canvas = byId('chart');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#536878';
+      ctx.beginPath(); ctx.moveTo(50, 25); ctx.lineTo(50, 235); ctx.lineTo(935, 235); ctx.stroke();
+      ctx.fillStyle = '#dbe7ef'; ctx.font = '13px monospace';
+      ctx.fillText('Total absolute error (0–4)', 50, 17);
+      ctx.fillText('4', 25, 35); ctx.fillText('0', 25, 235);
+      ctx.fillText('Epoch: 0', 50, 260); ctx.fillText(String(epochs), 860, 260);
+      ctx.strokeStyle = '#eb7de8'; ctx.beginPath();
+      points.forEach(([epoch, error], index) => {
+        const x = 50 + epoch / epochs * 885;
+        const y = 235 - error / 4 * 200;
+        if (index === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
+    byId('stop').addEventListener('click', () => { stopped = true; });
+    byId('controls').addEventListener('submit', async event => {
+      event.preventDefault();
+      if (byId('train').disabled) return;
+      const epochs = Number(byId('epochs').value);
+      if (!Number.isInteger(epochs) || epochs < 1 || epochs > 1000000) {
+        byId('status').textContent = 'Enter a whole number from 1 to 1,000,000.';
+        return;
+      }
+      const graph = byId('graph').checked;
+      const progress = byId('progress').checked;
+      const save = byId('save').checked;
+      const outputElement = byId('console');
+      const lines = [], logs = [], points = [];
+      const print = message => {
+        console.log(message);
+        lines.push(message);
+        if (lines.length > 250) lines.shift();
+        outputElement.textContent = lines.join('\n');
+        outputElement.scrollTop = outputElement.scrollHeight;
+      };
+      const record = message => { if (save) logs.push(message); };
+      stopped = false;
+      byId('train').disabled = true;
+      byId('stop').disabled = false;
+      byId('download').hidden = true;
+      if (downloadUrl) { URL.revokeObjectURL(downloadUrl); downloadUrl = null; }
+      byId('chart').hidden = !graph;
+      byId('status').textContent = 'Training...';
+      outputElement.textContent = '';
+      const started = performance.now();
+      const model = new XorNetwork();
+      let completed = 0;
+      try {
+        print('Written by Jibril Richardson - https://github.com/6ix0neJ\nTraining...');
+        record('=== Neural Network Training Log ===\nLearning Rate: 0.5');
+        if (graph) drawGraph(points, epochs);
+        // Yield between short batches so the page can paint and process Stop clicks.
+        while (completed < epochs && !stopped) {
+          const batchEnd = Math.min(completed + 100, epochs);
+          while (completed < batchEnd) {
+            const error = model.trainEpoch();
+            completed++;
+            if (completed === 1 || completed % 100 === 0 || completed === epochs) points.push([completed, error]);
+            if (completed === 1 || completed % 1000 === 0 || completed === epochs) {
+              const message = `Epoch: ${completed} | Total error: ${error.toFixed(4)} | Error-based score: ${((1 - error / 4) * 100).toFixed(2)}%`;
+              record(message);
+              if (progress) print(message);
+            }
+            if (progress && completed % 5000 === 0) print(`w1=${model.w1} w2=${model.w2} w3=${model.w3} w4=${model.w4}`);
+            if (!progress && completed % 10000 === 0) print(`Still training... Epoch: ${completed}`);
+          }
+          if (graph) drawGraph(points, epochs);
+          await new Promise(resolve => setTimeout(resolve, 0));
+        }
+        record('\n=== Final Parameters ===\n' + JSON.stringify(model, null, 2));
+        print('\n=== Final Model Outputs ===');
+        record('\n=== Final Model Outputs ===');
+        let correct = 0;
+        for (const [inputs, target] of trainingData) {
+          const output = model.forward(inputs).output;
+          const predicted = output >= 0.5 ? 1 : 0;
+          if (predicted === target) correct++;
+          const message = `[${inputs.join(', ')}] -> ${output.toFixed(3)} | Predicted: ${predicted} | Expected: ${target}`;
+          print(message); record(message);
+        }
+        const summary = `${stopped ? 'Stopped' : 'Training complete'} after ${completed} epochs. Training time: ${((performance.now() - started) / 1000).toFixed(2)} seconds. Classification accuracy: ${correct}/4.`;
+        print(summary); record(summary);
+        byId('status').textContent = summary;
+        if (save) {
+          downloadUrl = URL.createObjectURL(new Blob([logs.join('\n')], { type: 'text/plain' }));
+          byId('download').href = downloadUrl;
+          byId('download').download = `training_${new Date().toISOString().replace(/[:.]/g, '-')}.txt`;
+          byId('download').hidden = false;
+        }
+      } catch (error) {
+        print(`Training failed: ${error.message}`);
+        byId('status').textContent = 'Training failed. See console output.';
+      } finally {
+        byId('train').disabled = false;
+        byId('stop').disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>
