@@ -46,7 +46,7 @@ class EpochTimer(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs=None):
         epoch_time = time.time() - self.start_time
         self.epoch_times.append(epoch_time)
-        print(f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
+        if epochtimeyorn: (f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
 
 def progress_bar(current_epoch, traininterval):
     percent = (current_epoch / traininterval) * 100
