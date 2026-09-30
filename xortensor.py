@@ -1,3 +1,5 @@
+# Code by Jibril Richardson
+
 import tensorflow as tf
 import numpy as np
 import time
@@ -34,21 +36,21 @@ traininterval = int(input("How many epochs?: "))
 epochtimeyorn = input("Would you like to see epoch times? (y/n): ").strip().lower() == "y"
 
 class EpochTimer(tf.keras.callbacks.Callback):
-    if epochtimeyorn:
-        def on_train_begin(self, logs=None):
-            self.epoch_times = []
 
-        def on_epoch_begin(self, epoch, logs=None):
-            self.start_time = time.time()
+    def on_train_begin(self, logs=None):
+        self.epoch_times = []
 
-        def on_epoch_end(self, epoch, logs=None):
-            epoch_time = time.time() - self.start_time
-            self.epoch_times.append(epoch_time)
-            print(f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
+    def on_epoch_begin(self, epoch, logs=None):
+        self.start_time = time.time()
+
+    def on_epoch_end(self, epoch, logs=None):
+        epoch_time = time.time() - self.start_time
+        self.epoch_times.append(epoch_time)
+        print(f"\nEpoch {epoch + 1} took {epoch_time * 1000:.2f} ms")
 
 def progress_bar(current_epoch, traininterval):
     percent = (current_epoch / traininterval) * 100
-    bar_length = 50
+    bar_length = 70
     filled_length = int(bar_length * current_epoch // traininterval)
     bar = "█" * filled_length + "-" * (bar_length - filled_length)
 

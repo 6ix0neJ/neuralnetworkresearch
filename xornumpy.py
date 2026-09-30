@@ -1,4 +1,4 @@
-# Code By Jibril Richardson
+# Code by Jibril Richardson
 
 import random
 import math
