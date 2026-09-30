@@ -5,6 +5,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 import sys
+import os
 # Training data
 X = np.array([
     [0, 0],
@@ -117,9 +118,13 @@ def plot_accuracy():
     plt.title('Training Accuracy')
     plt.show()
 
-# Test
+
+def clear_screen():
+    # Clears the terminal screen ('cls' for Windows, 'clear' for Mac/Linux)
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 while True:
+    clear_screen()
     print("Select graphing option")
     print("1: Plot Loss")
     print("2: Plot Accuracy")
