@@ -4,6 +4,8 @@ import random
 import math
 import time
 import os
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 from datetime import datetime
 

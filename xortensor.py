@@ -3,7 +3,11 @@
 import tensorflow as tf
 import numpy as np
 import time
+
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+
 import sys
 import os
 # Training data
