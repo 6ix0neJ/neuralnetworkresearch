@@ -22,9 +22,15 @@ Install dependencies with:
 ```bash
 pip install -r requirements.txt
 ```
+If you're using either program in a cli install tk for matplotlib to display the graphs with:
+
+```bash
+sudo apt install python3-tk
+```
 
 Current dependencies:
 - matplotlib
+- tensorflow
 
 ---
 
@@ -55,6 +61,12 @@ The program will:
 ```
 
 ---
+
+# XOR Neural Net Webapp
+
+Achieves the same functionality as the above program but in a webapp format.
+
+![Alt Text](web-app-demo.gif)
 
 # Project Goal
 
