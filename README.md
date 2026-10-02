@@ -30,7 +30,7 @@ sudo apt install python3-tk
 
 Current dependencies:
 - matplotlib
-- tensorflow
+- tensorflow (for xortensor.py only)
 
 ---
 
@@ -59,14 +59,18 @@ The program will:
 [1, 0] -> 0.974
 [1, 1] -> 0.018
 ```
+![Alt Text](examplegraph.png)
 
 ---
-
 # XOR Neural Net Webapp
 
 Achieves the same functionality as the above program but in a webapp format.
 
 ![Alt Text](web-app-demo.gif)
+
+Try the webapp here: [XOR Neural Net Demo](https://www.youtube.com/watch?v=dQw4w9WgXcQ) (coming soon)
+
+---
 
 # Project Goal
 
